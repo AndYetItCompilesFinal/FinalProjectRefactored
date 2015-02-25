@@ -30,15 +30,23 @@ public class LevelWithItems extends Level
    }
    public boolean objective()
    {
-      boolean result=true;
+      boolean result=false;
       for(String item:target)
       {
+         result=false;
          for(Object o:pack.list)
          {
-            if(o instanceof UniqueItem&&o.description.equals(item))
+            if(o instanceof UniqueItem)
             {
-            
+               if(o.toString().equals(item))
+               {
+               result=true;
+               }
             }
+         }
+         if(result=false)
+         {
+            return result;
          }
       }
       return result;

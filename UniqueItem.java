@@ -4,5 +4,9 @@ public class UniqueItem extends UniqueLevelItemBehavior
    {
       this.description=description;
    }
+   public String toString()
+   {
+      return this.description;
+   }
 
 }//end of class
