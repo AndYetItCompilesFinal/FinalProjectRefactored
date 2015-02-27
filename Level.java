@@ -167,11 +167,6 @@ public abstract class Level
       return result;
       
    }//end of method
-   public void unlockLevel()
-	{
-	
-	
-	}
    
    public int random()
    {

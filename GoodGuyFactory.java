@@ -15,7 +15,7 @@ public class GoodGuyFactory
    public GoodGuy mainCharacter()
    {
       String name;
-		WeaponBehavior weapon= new Weapon(10);
+      WeaponBehavior weapon= new Weapon(10);
       Scanner kb= new Scanner(System.in);
       System.out.println("What is your name?");
       name=kb.nextLine();
@@ -86,7 +86,50 @@ public class GoodGuyFactory
       
       return character;
    }
-
+   public void unlockCharacter(GoodGuy character, Party party)
+   {
+      int choice;
+      characters.add(character);
+      Scanner kb= new Scanner(System.in);
+      do
+      {
+         System.out.println("You have unlocked "+character.toString());
+         System.out.println("Would you like to add them to your party?");
+         System.out.println("1) yes");
+         System.out.println("2) no");
+        
+         choice=kb.nextInt();
+      
+         if(choice!=1&&choice!=2)
+         {
+            System.out.println("I am sorry that is an invalid menu choice.");
+            System.out.println("Please try again");
+            System.out.println();
+         
+         }
+      
+      }while(choice==1||choice==2);
+      if(choice==1)
+      {
+         do
+         {
+            System.out.println("Would would you like to swap?");
+            System.out.println("1) "+party.party[1].toString());
+            System.out.println("2) "+party.party[2].toString());
+            choice=kb.nextInt();
+         
+            if(choice!=1&&choice!=2)
+            {
+               System.out.println("I am sorry that is an invalid menu choice.");
+               System.out.println("Please try again");
+               System.out.println();
+            }
+         }while(choice==1||choice==2);
+         characters.add(party.party[choice]);
+         party.setParty(character,choice);
+      }
+   
+   }
 
 
 }//end of class
