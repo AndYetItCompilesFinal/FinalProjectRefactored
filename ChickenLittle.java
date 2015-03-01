@@ -2,15 +2,32 @@ public class ChickenLittle extends GoodGuy
 {
    public ChickenLittle()
    {
-      this.HP=50;
-      this.defense=50;
-      this.speed=5;
-      this.attack=20;
+      maxHP = 50;
+      HP=50;
+      defense=50;
+      speed=5;
+      attack=20;
+      alive = true;
+      attack1 = "ATTACK ONE NAME";
+      attack2 = "ATTACK TWO NAME";
+      attack3 = "ATTACK THREE NAME";
    }
 
    public String toString()
    {
       return "Chicken Little";
+   }
+
+   public int attack1(){
+      return 0;
+   }
+
+   public int attack2(){
+      return 0;
+   }
+
+   public int attack3(){
+      return 0;
    }
 
 
