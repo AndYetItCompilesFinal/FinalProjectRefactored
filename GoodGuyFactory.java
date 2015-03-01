@@ -127,8 +127,7 @@ public class GoodGuyFactory
          }while(choice!=1&&choice!=2);
          characters.add(party.party[choice]);
          party.setParty(character,choice);
-      }
-   
+      }  
    }
 
 

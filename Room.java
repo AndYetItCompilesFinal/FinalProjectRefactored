@@ -16,54 +16,6 @@ public class Room
       this.type=type;
       this.size=0;
    }
-   public void setWeapon(WeaponBehavior weapon)
-   {
-      this.weapon=weapon;
-   }
-   public void setMinion(MinionBehavior minion)
-   {
-      this.minion=minion;
-   }
-   public void setBoss(BossBehavior boss)
-   {
-      this.boss=boss;
-   }
-   public void setUnique(UniqueLevelItemBehavior unique)
-   {
-      this.unique=unique;
-   }
-   public void setType(RoomTypeBehavior type)
-   {
-      this.type=type;
-   }
-   public void setPotion(PotionBehavior potion)
-   {
-      this.potion=potion;
-   }
-   public RoomTypeBehavior getRoomTypeBehavior()
-   {
-      return this.type;
-   }
-   public WeaponBehavior getWeaponBehavior()
-   {
-      return this.weapon;
-   }
-   public MinionBehavior getMinionBehavior()
-   {
-      return this.minion;
-   }
-   public UniqueLevelItemBehavior getUniqueLevelItemBehavior()
-   {
-      return this.unique;
-   }
-   public PotionBehavior getPotionBehavior()
-   {
-      return this.potion;
-   }
-   public BossBehavior getBossBehavior()
-   {
-      return boss;
-   }
    public void increaseSize()
    {
       this.size++;

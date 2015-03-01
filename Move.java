@@ -29,7 +29,7 @@ public class Move
       {
          for(int col=0;col<level[row].length;col++)
          {
-            if(this.level[row][col].getRoomTypeBehavior() instanceof Entrance)
+            if(this.level[row][col].type instanceof Entrance)
             {
                this.currentRow=row;
                this.currentCol=col;
@@ -44,21 +44,23 @@ public class Move
       int choice;
       Scanner kb=new Scanner(System.in);
       System.out.println(level[currentRow][currentCol]);
-      if(!(this.level[currentRow][currentCol].getPotionBehavior() instanceof NoPotion))
+      if(!(this.level[currentRow][currentCol].potion instanceof NoPotion))
       {
          potion(kb);   
       }//end of if
    	
-      if(!(level[currentRow][currentCol].getWeaponBehavior() instanceof NoWeapon))
+      if(!(level[currentRow][currentCol].weapon instanceof NoWeapon))
       {
          weapon(kb);
       }//end of if
-      if(!(level[currentRow][currentCol].getMinionBehavior() instanceof NoMinions))
+      if(!(level[currentRow][currentCol].minion instanceof NoMinions))
       {
          System.out.println("There is a bad guy in the room!!");
+         System.out.println("Battle "+level[currentRow][currentCol].minion.numofminions+ "Minions");
+         curlevel.enemiesDefeated+=level[currentRow][currentCol].minion.numofminions;
         	//BattlePhase.startBattle(party, b);
       }
-      if(level[currentRow][currentCol].getRoomTypeBehavior() instanceof Exit)
+      if(level[currentRow][currentCol].type instanceof Exit)
       {
          if(curlevel.position<tower.getFinalLevel())
          {
@@ -92,22 +94,20 @@ public class Move
             return true;
          }
       }
-      if(level[currentRow][currentCol].getUniqueLevelItemBehavior() instanceof UniqueItem)
+      if(level[currentRow][currentCol].unique instanceof UniqueItem)
       {
-         pack.list.add(this.level[currentRow][currentCol].getUniqueLevelItemBehavior());
-         System.out.println(level[currentRow][currentCol].getUniqueLevelItemBehavior().toString()+" added to backpack");
-         this.level[currentRow][currentCol].setUnique(new NoUniqueItems());
+         pack.list.add(this.level[currentRow][currentCol].unique);
+         System.out.println(level[currentRow][currentCol].unique.toString()+" added to backpack");
+         this.level[currentRow][currentCol].unique=new NoUniqueItems();
       }
    	
       return false;
     
    }//end
+   
    public void boss()
    {
-//       do
-//       {
-//       
-//       }while(battle);
+
    }
 
    public void potion(Scanner kb)
@@ -159,12 +159,12 @@ public class Move
                }//end of if
             }while(choice<1 || choice>3);
          	
-            party.party[choice-1].addHP(this.level[currentRow][currentCol].getPotionBehavior().getHP());
-            this.level[currentRow][currentCol].setPotion(new NoPotion());
+            party.party[choice-1].addHP(this.level[currentRow][currentCol].potion.getHP());
+            this.level[currentRow][currentCol].potion=new NoPotion();
             break;
          case 2:
-            pack.list.add(this.level[currentRow][currentCol].getPotionBehavior());
-            this.level[currentRow][currentCol].setPotion(new NoPotion());
+            pack.list.add(this.level[currentRow][currentCol].potion);
+            this.level[currentRow][currentCol].potion=new NoPotion();
             break;
          default:
             break;
@@ -200,8 +200,8 @@ public class Move
       {
          case 1: 
             MainCharacter main=(MainCharacter)party.getMain();
-            main.setWeapon(this.level[currentRow][currentCol].getWeaponBehavior());
-            this.level[currentRow][currentCol].setWeapon(new NoWeapon());
+            main.setWeapon(this.level[currentRow][currentCol].weapon);
+            this.level[currentRow][currentCol].weapon=new NoWeapon();
             break;
          default:
             break;

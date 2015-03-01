@@ -4,6 +4,7 @@ public abstract class Level
    Room[][] level=new Room[5][5];
 	int position;
 	GoodGuy disney;
+   public int enemiesDefeated;
 	public abstract boolean objective();
    public void initialize(WeaponBehavior weapon,BossBehavior boss)
    {
@@ -31,7 +32,7 @@ public abstract class Level
          col=random();
       }while(this.level[row][col]!=null);
       this.level[row][col]=new Room(row,col,new Exit());
-      this.level[row][col].setBoss(boss);
+      this.level[row][col].boss=boss;
    }
    public void levelWeapon(WeaponBehavior weapon)
    {
@@ -42,7 +43,7 @@ public abstract class Level
          col=random();
       }while(this.level[row][col]!=null);
       this.level[row][col]=new Room(row,col,new GenericRoom());
-      this.level[row][col].setWeapon(weapon);
+      this.level[row][col].weapon=weapon;
       this.level[row][col].increaseSize();
    }
    public void generateRooms()
@@ -65,8 +66,8 @@ public abstract class Level
       {
          row=random();
          col=random();
-      }while(!(this.level[row][col].getRoomTypeBehavior()instanceof GenericRoom)&&!(this.level[row][col].getPotionBehavior() instanceof NoPotion));
-      this.level[row][col].setPotion(potion);
+      }while(!(this.level[row][col].type instanceof GenericRoom)&&!(this.level[row][col].potion instanceof NoPotion));
+      this.level[row][col].potion=potion;
       this.level[row][col].increaseSize();
    }
    public void changenulls()
@@ -77,26 +78,26 @@ public abstract class Level
          for(int col=0;col<level[row].length;col++)
          {
          
-            if(this.level[row][col].getWeaponBehavior()==null)
+            if(this.level[row][col].weapon==null)
             {
-               this.level[row][col].setWeapon(new NoWeapon());
+               this.level[row][col].weapon=new NoWeapon();
             }
-            if(this.level[row][col].getMinionBehavior()==null)
+            if(this.level[row][col].minion==null)
             {
-               this.level[row][col].setMinion(new NoMinions());
+               this.level[row][col].minion=new NoMinions();
             }
-            if(this.level[row][col].getBossBehavior()==null)
+            if(this.level[row][col].boss==null)
             {
-               this.level[row][col].setBoss(new NoBoss());
+               this.level[row][col].boss=new NoBoss();
             }
-            if(this.level[row][col].getUniqueLevelItemBehavior()==null)
+            if(this.level[row][col].unique==null)
             {
-               this.level[row][col].setUnique(new NoUniqueItems());
+               this.level[row][col].unique=new NoUniqueItems();
             }
          
-            if(this.level[row][col].getPotionBehavior()==null)
+            if(this.level[row][col].potion==null)
             {
-               this.level[row][col].setPotion(new NoPotion());
+               this.level[row][col].potion=new NoPotion();
             }
          }//inner for loop
       }//outer for loop
@@ -107,11 +108,11 @@ public abstract class Level
       {
          return "M";
       }
-      if(room.getRoomTypeBehavior() instanceof Entrance)
+      if(room.type instanceof Entrance)
       {
          return "I";
       }
-      if(room.getRoomTypeBehavior() instanceof Exit)
+      if(room.type instanceof Exit)
       {
          return "O";
       }
@@ -119,19 +120,19 @@ public abstract class Level
       {
          return "E";
       }
-      if(room.getUniqueLevelItemBehavior() instanceof UniqueItem)
+      if(room.unique instanceof UniqueItem)
       {
          return "U";
       }
-      if(!(room.getPotionBehavior() instanceof NoPotion))
+      if(!(room.potion instanceof NoPotion))
       {
          return "P";
       }
-      if(!(room.getWeaponBehavior() instanceof NoWeapon))
+      if(!(room.weapon instanceof NoWeapon))
       {
          return "W";
       }
-      if(!(room.getMinionBehavior() instanceof NoMinions))
+      if(!(room.minion instanceof NoMinions))
       {
          return "B";
       }

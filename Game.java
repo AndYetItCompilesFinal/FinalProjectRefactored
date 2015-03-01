@@ -15,6 +15,6 @@ public class Game
       Backpack pack=new Backpack();
       Tower tower=new Tower(pack);
       Move move=new Move(tower,party,pack,partyfactory);
-      GameOptions run= new GameOptions(move,pack);
+      GameOptions run= new GameOptions(move,pack,party);
    }
 }//end of class

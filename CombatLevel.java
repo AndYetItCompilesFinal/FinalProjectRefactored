@@ -1,6 +1,6 @@
 public class CombatLevel extends Level
 {
-   public int enemiesDefeated;
+   
    public int minions;
    public MinionFactory minionFactory;
    public CombatLevel(GoodGuy disney, WeaponBehavior weapon, BossBehavior boss, int minions, int position)
@@ -24,8 +24,8 @@ public class CombatLevel extends Level
       {
          row=random();
          col=random();
-      }while(!(this.level[row][col].getRoomTypeBehavior()instanceof GenericRoom)&&!(this.level[row][col].getMinionBehavior() instanceof NoMinions));
-      this.level[row][col].setMinion(minionFactory.createParty());
+      }while(!(this.level[row][col].type instanceof GenericRoom)&&!(this.level[row][col].minion instanceof NoMinions));
+      this.level[row][col].minion=minionFactory.createParty();
       this.level[row][col].increaseSize();
    }
    public boolean objective()

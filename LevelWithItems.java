@@ -23,9 +23,9 @@ public class LevelWithItems extends Level
       {
          row=random();
          col=random();
-      }while(!(this.level[row][col].getRoomTypeBehavior()instanceof GenericRoom)&&!(this.level[row][col].getUniqueLevelItemBehavior() instanceof NoUniqueItems));
+      }while(!(this.level[row][col].type instanceof GenericRoom)&&!(this.level[row][col].unique instanceof NoUniqueItems));
       this.level[row][col]=new Room(row,col,new GenericRoom());
-      this.level[row][col].setUnique(new UniqueItem(description));
+      this.level[row][col].unique=new UniqueItem(description);
       this.level[row][col].increaseSize();
    }
    public boolean objective()

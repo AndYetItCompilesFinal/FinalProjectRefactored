@@ -1,19 +1,19 @@
 public class Party
 {
-   Character[] party;
+   GoodGuy[] party;
    
-   public Party(Character a, Character b, Character c){
-	party = new Character[3];
+   public Party(GoodGuy a, GoodGuy b, GoodGuy c){
+	party = new GoodGuy[3];
       party[0] = a;
       party[1] = b;
       party[2] = c;
    }
    
-   public Character getParty(int index){
+   public GoodGuy getParty(int index){
       return party[index];
    }
    
-   public void setParty(Character chara, int index){
+   public void setParty(GoodGuy chara, int index){
       party[index] = chara;
    }
    
@@ -22,7 +22,7 @@ public class Party
 	  return str;
    }
 	
-	public Character getMain()
+	public GoodGuy getMain()
 	{
 		return (MainCharacter)party[0];
 	}
