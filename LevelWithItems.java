@@ -44,7 +44,7 @@ public class LevelWithItems extends Level
                }
             }
          }
-         if(result=false)
+         if(result==false)
          {
             return result;
          }

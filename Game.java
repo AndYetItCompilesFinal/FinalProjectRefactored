@@ -10,10 +10,11 @@ public class Game
       Party party=partyfactory.createParty();
       System.out.println(party);
       //make tower
-		Tower tower=new Tower();
+		
       
       Backpack pack=new Backpack();
-      Move move=new Move(tower,party,pack);
-      GameOptions run= new GameOptions(move);
+      Tower tower=new Tower(pack);
+      Move move=new Move(tower,party,pack,partyfactory);
+      GameOptions run= new GameOptions(move,pack);
    }
 }//end of class

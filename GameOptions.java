@@ -3,8 +3,10 @@ import java.util.*;
    {
       public Move move;
    	public boolean win;
-      public GameOptions(Move move)
+      public Backpack pack;
+      public GameOptions(Move move, Backpack pack)
       {
+         this.pack=pack;
       	this.move=move;
       	win=false;
       	run();
@@ -44,6 +46,7 @@ import java.util.*;
                   break;
                case 2:
                  //backpack
+                 System.out.println(pack);
                   break;
                default:
 						win=true;

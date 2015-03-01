@@ -9,8 +9,10 @@ public class Move
    int cur=0;
    Party party;
    Backpack pack;
-   public Move(Tower tower,Party party,Backpack pack)
+   GoodGuyFactory factory;
+   public Move(Tower tower,Party party,Backpack pack, GoodGuyFactory factory)
    {
+      this.factory=factory;
       this.tower=tower;
       this.curlevel=tower.tower[cur];
       this.level=curlevel.level;
@@ -62,13 +64,14 @@ public class Move
          {
             cur++;
             System.out.println("You reached the stairs!");
-            if(curlevel.objective())
+            if(!curlevel.objective())
             {
                System.out.println("Oh no you have not finished your objective");
             }
             else
             {
-               //unlock character
+               System.out.println("You completed the level objective!");
+               factory.unlockCharacter(curlevel.disney,party);//unlock character
                boss();
                this.curlevel=tower.tower[cur];
                this.level=curlevel.level;
@@ -82,8 +85,9 @@ public class Move
             if(curlevel.objective())
             {
                System.out.println("Oh no you have not finished your objective");
+               return false;
             }
-            //unlock character
+            factory.unlockCharacter(curlevel.disney,party);//unlock character
             boss();
             return true;
          }
