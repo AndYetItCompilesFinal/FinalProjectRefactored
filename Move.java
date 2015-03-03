@@ -93,15 +93,44 @@ public class Move
             boss();
             return true;
          }
-      }
+      }//end 
+      int index;
       if(level[currentRow][currentCol].unique instanceof UniqueItem)
-      {
-         pack.list.add(this.level[currentRow][currentCol].unique);
+      {   boolean result=false;
+               // index=pack.list.indexOf(level[currentRow][currentCol].unique);
+      //                if(index>=0)
+      //                {
+      //                  UniqueItem o=(UniqueItem)pack.list.get(index);
+      //                  o.quantity++;
+      //                  pack.list.set(index,o);  
+      //                }
+      //                else
+      //                {
+      //                   pack.list.add(this.level[currentRow][currentCol].unique);
+      //                } 
+         for(Object o:pack.list)
+         {
+            if(level[currentRow][currentCol].unique.description.equals(o.toString()))
+            {
+               UniqueItem obj=(UniqueItem)o;
+               obj.quantity++;
+               o=obj;
+               result=true;
+            }
+         }  
+         if(!result)
+         {
+            pack.list.add(this.level[currentRow][currentCol].unique);
+         }         
+      
+         
+         
          System.out.println(level[currentRow][currentCol].unique.toString()+" added to backpack\n");
          this.level[currentRow][currentCol].unique=new NoUniqueItems();
          this.level[currentRow][currentCol].size--;
       }
-   	System.out.println(curlevel);
+      
+      System.out.println(curlevel);
       return false;
       
     
@@ -109,7 +138,7 @@ public class Move
    
    public void boss()
    {
-
+   
    }
 
    public void potion(Scanner kb)

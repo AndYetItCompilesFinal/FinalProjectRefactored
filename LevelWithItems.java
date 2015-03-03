@@ -1,6 +1,7 @@
+import java.util.*;
 public class LevelWithItems extends Level
 {
-   public String[] target;
+   public ArrayList<UniqueItem> target;
    public Backpack pack;
    public LevelWithItems(GoodGuy disney, WeaponBehavior weapon,BossBehavior boss,String[] items,String[] target, int position, Backpack pack)
    {
@@ -8,7 +9,8 @@ public class LevelWithItems extends Level
       this.position=position;
       this.disney=disney;
       initialize(weapon,boss);
-      this.target=target;
+      this.target=new ArrayList<UniqueItem>();
+      targetToArrayList(target);
       this.pack=pack;
       for(String item:items)
       {
@@ -22,6 +24,27 @@ public class LevelWithItems extends Level
          System.out.println(item);
       }
       System.out.println();
+   }
+   public void targetToArrayList(String[] target)
+   {
+      boolean result=false;
+      for(String item:target)
+      {
+         result=false;
+         for(UniqueItem o:this.target)
+         {
+               if(item.equals(o.toString()))
+               {
+                  o.quantity++;
+                  result=true;
+               }
+         }
+         if(!result)
+         {
+            this.target.add(new UniqueItem(item));
+         }
+      }
+      
    }
    public void createUniqueItems(String description)
    {
@@ -37,16 +60,17 @@ public class LevelWithItems extends Level
    public boolean objective()
    {
       boolean result=false;
-      for(String item:target)
+      for(UniqueItem item:target)
       {
          result=false;
          for(Object o:pack.list)
          {
             if(o instanceof UniqueItem)
             {
-               if(o.toString().equals(item))
+               UniqueItem obj=(UniqueItem)o;
+               if(obj.toString().equals(item.toString())&&item.quantity<=obj.quantity)
                {
-               result=true;
+                  result=true;
                }
             }
          }
