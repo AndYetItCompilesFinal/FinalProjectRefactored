@@ -10,7 +10,7 @@ public class Backpack
 	}
    public String toString()
    {
-   String result="";
+   String result="Backpack:\n";
       for(Object o:list)
       {
          result+=o.toString();

@@ -18,7 +18,7 @@ public class Party
    }
    
    public String toString(){
-     String str = ("This party consists of " + party[0].toString()+ ", " + party[1].toString() + ", and " + party[2].toString() + ". ");
+     String str = ("Your party consists of " + party[0].toString()+ ", " + party[1].toString() + ", and " + party[2].toString() + ". ");
 	  return str;
    }
 	

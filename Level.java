@@ -44,7 +44,7 @@ public abstract class Level
       }while(this.level[row][col]!=null);
       this.level[row][col]=new Room(row,col,new GenericRoom());
       this.level[row][col].weapon=weapon;
-      this.level[row][col].increaseSize();
+      this.level[row][col].size++;
    }
    public void generateRooms()
    {
@@ -66,13 +66,12 @@ public abstract class Level
       {
          row=random();
          col=random();
-      }while(!(this.level[row][col].type instanceof GenericRoom)&&!(this.level[row][col].potion instanceof NoPotion));
+      }while(!(this.level[row][col].type instanceof GenericRoom)||(this.level[row][col].potion!=null));
       this.level[row][col].potion=potion;
-      this.level[row][col].increaseSize();
+      this.level[row][col].size++;
    }
    public void changenulls()
    {
-      Room room;
       for (int row=0;row<level.length;row++)
       {
          for(int col=0;col<level[row].length;col++)
@@ -104,10 +103,7 @@ public abstract class Level
    }
    public String itemType(Room room)
    {
-      if(room.getSize()>1)
-      {
-         return "M";
-      }
+      
       if(room.type instanceof Entrance)
       {
          return "I";
@@ -116,27 +112,30 @@ public abstract class Level
       {
          return "O";
       }
-      if(room.getSize()==0)
+      if(room.size>1)
       {
-         return "E";
+         return "M";
       }
-      if(room.unique instanceof UniqueItem)
+      else if(room.unique instanceof UniqueItem)
       {
          return "U";
       }
-      if(!(room.potion instanceof NoPotion))
+      else if(!(room.potion instanceof NoPotion))
       {
          return "P";
       }
-      if(!(room.weapon instanceof NoWeapon))
+      else if(!(room.weapon instanceof NoWeapon))
       {
          return "W";
       }
-      if(!(room.minion instanceof NoMinions))
+      else if(!(room.minion instanceof NoMinions))
       {
          return "B";
       }
-      return "";
+      else
+      {
+         return "E";
+      }
    }
    
    public String toString()

@@ -55,8 +55,8 @@ import java.util.*;
                   {
                      System.out.println(member.printStats());
                      System.out.println();
-                     
                   }
+                  break;
                default:
 						win=true;
                   break;

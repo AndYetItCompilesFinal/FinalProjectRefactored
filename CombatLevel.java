@@ -24,9 +24,9 @@ public class CombatLevel extends Level
       {
          row=random();
          col=random();
-      }while(!(this.level[row][col].type instanceof GenericRoom)&&!(this.level[row][col].minion instanceof NoMinions));
+      }while(!(this.level[row][col].type instanceof GenericRoom)||(this.level[row][col].minion!=null));
       this.level[row][col].minion=minionFactory.createParty();
-      this.level[row][col].increaseSize();
+      this.level[row][col].size++;
    }
    public boolean objective()
    {

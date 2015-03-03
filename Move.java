@@ -97,11 +97,13 @@ public class Move
       if(level[currentRow][currentCol].unique instanceof UniqueItem)
       {
          pack.list.add(this.level[currentRow][currentCol].unique);
-         System.out.println(level[currentRow][currentCol].unique.toString()+" added to backpack");
+         System.out.println(level[currentRow][currentCol].unique.toString()+" added to backpack\n");
          this.level[currentRow][currentCol].unique=new NoUniqueItems();
+         this.level[currentRow][currentCol].size--;
       }
-   	
+   	System.out.println(curlevel);
       return false;
+      
     
    }//end
    
@@ -114,7 +116,7 @@ public class Move
    {
       int choice;
       do{
-         System.out.println("You have found a health potion");
+         System.out.println("You have found a potion");
          System.out.println("What would you like to do:");
          System.out.println("1. Use it");
          System.out.println("2. Put it in your backpack");
@@ -165,6 +167,7 @@ public class Move
          case 2:
             pack.list.add(this.level[currentRow][currentCol].potion);
             this.level[currentRow][currentCol].potion=new NoPotion();
+            this.level[currentRow][currentCol].size--;
             break;
          default:
             break;

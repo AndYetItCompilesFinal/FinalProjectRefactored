@@ -16,14 +16,6 @@ public class Room
       this.type=type;
       this.size=0;
    }
-   public void increaseSize()
-   {
-      this.size++;
-   }
-   public int getSize()
-   {
-      return this.size;
-   }
    public String toString()
    {
       String result="";
@@ -44,11 +36,11 @@ public class Room
          }
          if(!(potion instanceof NoPotion))
          {
-            potion.toString();
+            result+=potion.getDescription();
          }
          if(!(unique instanceof NoUniqueItems))
          {
-            unique.toString();
+            result+=unique.getDescription();
          }
       }
       return result;

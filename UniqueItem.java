@@ -1,12 +1,11 @@
 public class UniqueItem extends UniqueLevelItemBehavior
 {
+   public int quantity;
    public UniqueItem(String description)
    {
+      this.quantity=1;
       this.description=description;
    }
-   public String toString()
-   {
-      return this.description;
-   }
+
 
 }//end of class

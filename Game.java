@@ -9,6 +9,7 @@ public class Game
       GoodGuyFactory partyfactory=new GoodGuyFactory(goodguys);
       Party party=partyfactory.createParty();
       System.out.println(party);
+      System.out.println();
       //make tower
 		
       

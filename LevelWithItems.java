@@ -15,6 +15,13 @@ public class LevelWithItems extends Level
          createUniqueItems(item);
       }
       changenulls();
+      System.out.println(disney+" needs your help!!\n");
+      System.out.println("Find these items for "+disney+":");
+      for(String item:target)
+      {
+         System.out.println(item);
+      }
+      System.out.println();
    }
    public void createUniqueItems(String description)
    {
@@ -23,10 +30,9 @@ public class LevelWithItems extends Level
       {
          row=random();
          col=random();
-      }while(!(this.level[row][col].type instanceof GenericRoom)&&!(this.level[row][col].unique instanceof NoUniqueItems));
-      this.level[row][col]=new Room(row,col,new GenericRoom());
+      }while(!(this.level[row][col].type instanceof GenericRoom)||(this.level[row][col].unique!=null));
       this.level[row][col].unique=new UniqueItem(description);
-      this.level[row][col].increaseSize();
+      this.level[row][col].size++;
    }
    public boolean objective()
    {

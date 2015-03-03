@@ -51,7 +51,6 @@ public class GoodGuyFactory
       }while(choice<1 || choice>available);
       
       name=(characters.get(choice-1)).toString();
-      System.out.println(name);
       //creates the character chosen
       if("Pooh Bear".equals(name))
       {
