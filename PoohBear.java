@@ -1,20 +1,21 @@
 public class PoohBear extends GoodGuy
 {
+
    public PoohBear()
    {
+      name = "Pooh Bear";
       maxHP = 50;
       HP=50;
       defense=50;
       speed=5;
       attack=20;
       alive = true;
+      good = true;
+      greeting = "ENTER HELLO HERE";
+      goodBye = "ENTER GOODBYE HERE";
       attack1 = "ATTACK ONE NAME";
       attack2 = "ATTACK TWO NAME";
       attack3 = "ATTACK THREE NAME";
-   }
-   public String toString()
-   {
-      return "Pooh Bear";
    }
 
    public int attack1(){

@@ -9,6 +9,7 @@ public class BattleSetup implements Iterable{
       turnOrder = new LinkedList;
    }
 
+   //Adds a character to the order list and returns if it was successfully added
    public boolean addChar(Character c){
       boolean added;
       added = turnOrder.add(c);
@@ -19,8 +20,6 @@ public class BattleSetup implements Iterable{
       }
       return added;
    }
-
-   public
 
    public Iterator iterator() {
       return new BattleOrder(turnOrder);

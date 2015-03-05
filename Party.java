@@ -27,5 +27,10 @@ public class Party
 		return (MainCharacter)party[0];
 	}
    
-      
+   public boolean partyAlive(){
+      if(!party[0].isAlive() && !party[1].isAlive() && !party[2].isAlive()){
+         return false;
+      }
+      return true;
+   }
 }//end of class

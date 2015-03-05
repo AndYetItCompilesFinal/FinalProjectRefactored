@@ -1,6 +1,7 @@
 public abstract class BadGuy extends Character
 {
 
+   // chooses a random attack and returns the base damage of it
    public int chooseAttack()
    {
       int baseAttack;
@@ -12,7 +13,7 @@ public abstract class BadGuy extends Character
       }else{
          baseAttack = attack3();
       }
-      return baseAttack;
+      return baseAttack + attack;
 
    }
 

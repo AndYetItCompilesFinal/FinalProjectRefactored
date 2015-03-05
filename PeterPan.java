@@ -1,21 +1,19 @@
 public class PeterPan extends GoodGuy
 {
+
    public PeterPan()
    {
+      name = "Peter Pan";
       maxHP = 50;
       HP=50;
       defense=50;
       speed=5;
       attack=20;
       alive = true;
+      good = true;
       attack1 = "ATTACK ONE NAME";
       attack2 = "ATTACK TWO NAME";
       attack3 = "ATTACK THREE NAME";
-   }
-
-   public String toString()
-   {
-      return "PeterPan";
    }
 
    public int attack1(){
