@@ -6,7 +6,7 @@ public class BattleSetup implements Iterable{
    LinkedList turnOrder;
 
    public BattleSetup(){
-      turnOrder = new LinkedList;
+      turnOrder = new LinkedList();
    }
 
    //Adds a character to the order list and returns if it was successfully added

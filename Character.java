@@ -3,7 +3,7 @@ public abstract class Character
    protected String name;
    protected int maxHP;
    protected int HP;
-   protected int defense;
+   protected double defense;
    protected int speed;
    protected int attack;
    protected boolean alive;
@@ -37,6 +37,10 @@ public abstract class Character
 
    public String toString(){
       return name;
+   }
+
+   public int getStrength(){
+      return attack;
    }
 
    //calculates dodge, true if dodge successful, false if dodge failed
