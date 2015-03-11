@@ -3,10 +3,10 @@ import java.util.Scanner;
 
 public class BattlePhase {
    //Sets up turn order and sets attack into motion
-   public boolean battle(Party good, BadGuy[] bad) {
+   public void battle(Party good, BadGuy[] bad) {
       BattleSetup order = new BattleSetup();
       //add characters to order based on speed stat
-      Character[] a = {good.getParty(0), good.getParty(1), good.getParty(2), bad[0], bad[1], bad[2]};
+      Character[] a = {good.getParty(0), good.getParty(1), good.getParty(2), bad[0], bad[1] bad[2]};
       for (int i = 1; i < a.length; i++) {
          Character temp = a[i];
          int j;
@@ -23,11 +23,17 @@ public class BattlePhase {
       boolean win = round(order, good, bad);
       if(win){
          System.out.println("Your team won the fight!");
-         return true;
       }else{
          System.out.println("Your team lost the fight!");
-         return false;
       }
+   }
+
+   //Swap only used in sorting the turn order by speed stat
+   public void swap(int i, int j, Character[] ara) {
+      Character temp;
+      temp = ara[i];
+      ara[i] = ara[j];
+      ara[j] = temp;
    }
 
    //Continues to go through turn order and runs turn operations
@@ -37,11 +43,11 @@ public class BattlePhase {
          if (c.isGood()) {
             int choice = displayMenu();
             if (choice == 1) {
-               int baseAttack = ((GoodGuy)c).chooseAttack();
-               int dmg = damage(c.getStrength(), baseAttack);
+               int baseAttack = ((GoodGuy)c).attackMenu();
+               int dmg = damage(baseAttack);
                int index = chooseTarget(c, bad);
                if(bad[index].dodgeAttempt()){
-                  System.out.println(c.toString() + " missed the attack.");
+                  System.out.println(c.toString() + " missed the attack.")
                }else{
                   System.out.println("The attack hit for " + dmg +".");
                   boolean alive = bad[index].applyDamage(dmg);
@@ -53,7 +59,7 @@ public class BattlePhase {
                }
             } else {
                //pull up the backpack to use the item
-               System.out.println("Access the backpack items here.");
+               System.out.println("Access the backpack items here.")
             }
          } else {
             survivedTurn = villanTurn(c);
@@ -68,9 +74,10 @@ public class BattlePhase {
    }
 
    //Calculates a random damage in a range
-   public static int damage(int str, int base) {
-      int dmg = base;
-      for (int i = 1; i <= str; i++) {
+   public static int damage(int base) {
+      int dmg = 0;
+      int temp;
+      for (int i = 1; i <= base; i++) {
          dmg = dmg + ((int) (Math.random() * (6 - 1) + 1));
       }
       dmg = dmg + base;
@@ -122,7 +129,7 @@ public class BattlePhase {
          Scanner sc = new Scanner(System.in);
          target = sc.nextInt();
          if(target < 1 || target > 3){
-            System.out.println("Invalid number.");
+            System.out.println("Invalid number.")
          }
       }
       return target-1;

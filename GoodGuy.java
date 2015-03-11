@@ -23,7 +23,7 @@ public abstract class GoodGuy extends Character
       }
    }
 
-   public int chooseAttack(){
+   public int attackMenu(){
       int att = 0;
       while(att < 1 || att > 3) {
          System.out.println("Choose your Attack!");
@@ -35,12 +35,12 @@ public abstract class GoodGuy extends Character
          att = sc.nextInt();
       }
       int base;
-      if( att == 1){
-         base = attack1();
-      }else if( att == 2){
-         base = attack2();
+      if{ att == 1){
+         base = attack1() + attack;
+      }else if{ att == 2){
+         base = attack2() + attack;
       }else{
-         base = attack3();
+         base = attack3() + attack;
       }
       return base;
    }
