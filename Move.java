@@ -75,6 +75,7 @@ public class Move
                System.out.println("You completed the level objective!");
                factory.unlockCharacter(curlevel.disney,party);//unlock character
                boss();
+               deleteItems();
                this.curlevel=tower.tower[cur];
                this.level=curlevel.level;
                findEntrance();
@@ -91,23 +92,14 @@ public class Move
             }
             factory.unlockCharacter(curlevel.disney,party);//unlock character
             boss();
+            deleteItems();
             return true;
          }
       }//end 
       int index;
       if(level[currentRow][currentCol].unique instanceof UniqueItem)
       {   boolean result=false;
-               // index=pack.list.indexOf(level[currentRow][currentCol].unique);
-      //                if(index>=0)
-      //                {
-      //                  UniqueItem o=(UniqueItem)pack.list.get(index);
-      //                  o.quantity++;
-      //                  pack.list.set(index,o);  
-      //                }
-      //                else
-      //                {
-      //                   pack.list.add(this.level[currentRow][currentCol].unique);
-      //                } 
+
          for(Object o:pack.list)
          {
             if(level[currentRow][currentCol].unique.description.equals(o.toString()))
@@ -138,6 +130,18 @@ public class Move
    
    public void boss()
    {
+   
+   }
+   public void deleteItems()
+   {
+      for(int i=0;i<pack.list.size();i++)
+      {
+         if(pack.list.get(i) instanceof UniqueItem)
+         {
+            pack.list.remove(i);
+            i--;
+         }
+      }
    
    }
 
