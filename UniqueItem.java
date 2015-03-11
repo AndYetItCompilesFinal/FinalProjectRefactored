@@ -1,6 +1,6 @@
 public class UniqueItem extends UniqueLevelItemBehavior
 {
-   
+   public int quantity;
    public UniqueItem(String description)
    {
       this.quantity=1;

@@ -1,10 +1,9 @@
 public abstract class UniqueLevelItemBehavior
 {
  String description;
- public int quantity;
  public String toString()
  {
-      return description;
+   return description;
  }
  public String getDescription()
  {
